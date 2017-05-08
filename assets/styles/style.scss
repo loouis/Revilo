@@ -1,0 +1,653 @@
+@import "reset";
+@import "mixins";
+
+/*------------------------------ Fonts */
+
+
+
+/* Bella stencil */
+@font-face {
+  font-family: 'f37_bella';
+  src: url('assets/fonts/f37bella-stencil-webfont.eot');
+  src: url('assets/fonts/f37bella-stencil-webfont.eot?#iefix') format('embedded-opentype'),
+       url('assets/fonts/f37bella-stencil-webfont.woff2') format('woff2'),
+       url('assets/fonts/f37bella-stencil-webfont.woff') format('woff'),
+       url('assets/fonts/f37bella-stencil-webfont.ttf') format('truetype'),
+       url('assets/fonts/f37bella-stencil-webfont.svg#f37_bellastencil') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+// GT Walsheim Light
+@font-face {
+  font-family: 'GTWalsheim-Light';
+  src: url('assets/fonts/GTWalsheim-Light.eot?#iefix') format('embedded-opentype'),
+  url('assets/fonts/GTWalsheim-Light.otf')  format('opentype'),
+  url('assets/fonts/GTWalsheim-Light.woff') format('woff'),
+  url('assets/fonts/GTWalsheim-Light.ttf')  format('truetype'),
+  url('assets/fonts/GTWalsheim-Light.svg#GTWalsheim-Medium') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+$head-font: 'f37_bella';
+$copy-font: 'GTWalsheim-Light';
+
+
+/*------------------------------ Variables */
+
+$dark-grey: #212121;
+$dark-grey-2:#B9B9B9;
+
+
+
+
+/*------------------------------ General base styles */
+
+
+body, html{
+  background:black;
+  font-size:16px;
+}
+
+svg, img{
+  width:100%;
+  height:auto;
+}
+
+button{
+  outline:none;
+  border:none;
+}
+
+
+@include screen(medium){
+  /* Border */
+  .border-top, .border-bottom, .border-left, .border-right {
+    background: black;
+    position: fixed;
+    z-index:15;
+  }
+  .border-left, .border-right {
+    top: 0; bottom: 0;
+    width: 20px;
+  }
+  .border-left { left: 0; }
+  .border-right { right: 0; }
+
+  .border-top, .border-bottom {
+    left: 0; right: 0;
+    height: 20px;
+  }
+  .border-top { top: 0; }
+  .border-bottom { bottom: 0; }
+}
+
+
+
+/*------------------------------ Typography */
+
+h1,h2,h3,h4,h5{
+  color:white;
+  font-family: $head-font;
+}
+
+
+h2{
+  font-size:2.4em;
+  letter-spacing: 0.06em;
+  margin-bottom:0.4em;
+}
+
+
+p,cite,a{
+  font-size:1em;
+  line-height: 1.6em;
+  color:#939393;
+  font-family:$copy-font;
+}
+
+
+
+
+/*------------------------------ Layout */
+
+.wrapper{
+
+}
+
+.half-wrapper{
+  float:left;
+  width:100%;
+
+
+  @include screen(medium){
+    width:50%;
+  }
+}
+
+
+/*------------------------------ Homepage */
+
+main{
+  @include clearfix;
+}
+
+.main-content{
+  position: relative;
+  background: $dark-grey;
+  float:left;
+  width:100%;
+  z-index: 10;
+  overflow: hidden;
+
+  @include clearfix;
+
+  @include screen(medium){
+    margin-bottom:400px;
+  }
+}
+
+
+/*------ Hero */
+.hero{
+  position: relative;
+  width:100%;
+
+  &:after{
+    content:"";
+    display:table;
+    clear:both;
+  }
+
+  .scroll-down{
+    position:absolute;
+    width:50px;
+    height:50px;
+    left:50%;
+    right:50%;
+    margin-left:-25px;
+    z-index: 2;
+    bottom:15%;
+    background:$dark-grey;
+    border-radius:50%;
+    border:1px solid #5E5E5E;
+    margin-top:-25px;
+    cursor:pointer;
+
+    @include screen(medium){
+      bottom:20%;
+    }
+
+    svg{
+      padding-top:4px;
+      width:22px;
+    }
+  }
+
+  .hiring{
+    width:100%;
+    text-align: center;
+    top:0;
+    right:0;
+    border-bottom: 1px solid lighten($dark-grey, 10%);
+    padding:16px 26px;
+    z-index: 10;
+
+    @include screen(medium){
+      position:fixed;
+      width:initial;
+      top:20px;
+      right:20px;
+      background:lighten($dark-grey, 10%);
+      border-bottom:none;
+    }
+
+    p{
+      text-transform:uppercase;
+      letter-spacing: 0.04em;
+    }
+  }
+
+  .half-wrapper{
+    height: 100vh;
+    align-items: center;
+  }
+}
+
+.logo-lockup{
+  position: relative;
+  display: block;
+  top:50%;
+  transform:translateY(-70%);
+  padding:0 10%;
+
+  .logo{
+    width:100%;
+    // float:right;
+    position: relative;
+
+    svg{
+      margin-left: 5px;
+    }
+  }
+
+  p{
+    position: absolute;
+    left:0;
+    font-size:1.2em;
+    line-height:1.4em;
+    margin-top:25px;
+    text-align: center;
+
+    strong{
+      color:white;
+    }
+  }
+
+  @include screen(medium){
+    margin-right:0;
+    float:right;
+    width:60%;
+    padding:initial;
+    // margin-right:70px;
+
+    p{
+      margin-top:15px;
+      text-align: left;
+      width:80%;
+    }
+  }
+}
+
+
+/*------ Hero */
+
+.text-block{
+  position:relative;
+  width:100%;
+  overflow: hidden;
+  text-align: center;
+  background:$dark-grey;
+  // padding-bottom:60px;
+  margin-bottom:60px;
+
+  .half-wrapper{
+    position: relative;
+  }
+
+  .letter{
+    position: relative;
+    display: block;
+    width:100px;
+    height:100px;
+    margin: 0 auto;
+    background:$dark-grey;
+    margin-top:20px;
+    text-align: center;
+
+    h4{
+      font-size:5em;
+      padding:0;
+      margin:0;
+      top: 50%;
+      position: relative;
+      transform: translateY(-50%);
+    }
+  }
+
+  .text{
+    padding:0 10%;
+  }
+
+  &--left{
+
+    .letter{
+      &:after{
+        left:-50px;
+      }
+    }
+
+    .text{
+      padding-bottom:10%;
+
+      float:right;
+      padding-right:13%;
+    }
+  }
+
+  &--right{
+
+    .text{
+      float:left;
+      padding-bottom:10%;
+    }
+
+    .half-wrapper{
+      float:right;
+    }
+
+  }
+
+  &--center{
+    text-align: center;
+    // padding-bottom:100px;
+
+    h2{
+      text-align: center;
+    }
+
+    .text{
+      margin: 0 auto;
+      background:$dark-grey;
+    }
+
+    .letter{
+      h4{
+        font-size:12em;
+        height:100px;
+      }
+      &:after{
+        display: none;
+      }
+    }
+  }
+
+  @include screen(medium){
+    text-align: left;
+    margin:10% 0;
+    background:none;
+
+    .text{
+      width:90%;
+      margin-top:34px;
+    }
+
+    .letter{
+      margin-top:0;
+      position: absolute;
+
+      &:after{
+        content:"";
+        position: absolute;
+        width:50px;
+        height:1px;
+        background:#5E5E5E;
+        top:50%;
+        right:-50px;
+      }
+    }
+
+    &--center{
+
+      .text{
+        padding-top:100px;
+        width:70%;
+        padding-bottom:0;
+      }
+
+      .letter{
+        left:50%;
+        right:50%;
+        margin-left:-50px;
+
+        h4{
+          font-size:14em;
+          height:100px;
+        }
+      }
+    }
+
+    &--right{
+      .letter{
+        left:-50px;
+      }
+      .text{
+        left:-50px;
+        padding-left:19%;
+        padding-bottom:0;
+      }
+    }
+    &--left{
+      text-align: right;
+
+      .letter{
+        right:-50px;
+      }
+
+      .text{
+        right:-50px;
+        padding-right:19%;
+      }
+    }
+  }
+
+}
+
+.testimonials{
+  h2{
+    margin-top:20px;
+  }
+  cite{
+    margin-bottom:10px;
+  }
+  cite, p.job-role{
+    font-size:0.8em !important;
+  }
+}
+
+.testimonials-slider{
+  width:100%;
+  margin: 40px auto 0 auto;
+  padding: 0 0 10px 0;
+  overflow: hidden;
+
+
+
+  .bx-pager-item .bx-pager-link{
+    font-size: 1.4em;
+    padding:0 2px;
+    transition: transform .3s ease-in-out;
+
+    &:before{
+      content:"";
+      position: absolute;
+      width:8px;
+      left:50%;
+      right:50%;
+      margin-left:-4px;
+      bottom:0;
+      height:1px;
+      background:white;
+      opacity:0;
+      transform: translateY(0);
+
+      transition: all .3s ease-in-out .2s;
+    }
+
+    &.active{
+      color:white;
+      transform:scale(1.6);
+
+      &:before{
+        opacity:1;
+        transform: translateY(3px);
+      }
+    }
+
+  }
+
+  .bx-slider{
+
+    li{
+      padding-top:60px ;
+
+      &.bx-slider__slide--active{
+        p, cite{
+          opacity:1;
+        }
+      }
+      & > p, cite{
+        opacity:0.4;
+        width:100%;
+        margin: 0 auto;
+        text-align: center;
+        font-size:1em;
+        font-style:italic;
+
+        transition:opacity .25s ease-in-out;
+      }
+      cite{
+        position: relative;
+        color:white;
+        text-align:center;
+        margin:15px 0 5px 0;
+        padding-top:18px;
+
+        &:after{
+          content:"";
+          position:absolute;
+          width:40px;
+          height:1px;
+          background:lighten($dark-grey,20%);
+          top:0;
+          left:50%;
+          right:50%;
+          margin-left:-20px;
+        }
+      }
+    }
+
+  }
+
+  @include screen(medium){
+    // width:60%;
+    overflow: visible;
+
+    .bx-slider{
+      li{
+        padding-top:70px;
+        p{
+          width:80%;
+        }
+      }
+    }
+  }
+}
+
+.timeline-line{
+  position: absolute;
+  left:50%;
+  right:50%;
+  top: 100%;
+  margin-top:170px;
+  width: 1px;
+  background: #5E5E5E;
+  height: 2400px;
+
+  @include screen(medium){
+    right: 0;
+    left:initial;
+    margin-top:10px;
+  }
+}
+
+
+/*------------------------------ Footer */
+
+.footer{
+  position:relative;
+  width:100%;
+  background:black;
+  text-align:center;
+  padding:10% 0;
+  overflow: hidden;
+
+
+  &:after{
+    content:"";
+    position:absolute;
+    width:1px;
+    height:500px;
+    background:#5E5E5E;
+    right:50%;
+    left:50%;
+    top:0%;
+    z-index: 1;
+  }
+
+  .wrapper{
+    position: relative;
+    background:black;
+    z-index: 2;
+    // margin-bottom:60px;
+    padding:30px 0;
+
+    h2{
+      font-size:2.5em;
+    }
+
+    p{
+      margin-bottom:30px;
+      padding:0 10%;
+    }
+
+    a{
+      display: inline-block;
+      color:white;
+      font-family:$copy-font;
+      margin:5px 0;
+      color:$dark-grey-2;
+      position:relative;
+      overflow: hidden;
+
+      transition: color .25s ease-in-out;
+
+      &:after{
+        content:"";
+        position:absolute;
+        left:0;
+        bottom:0px;
+        height:1px;
+        width:100%;
+        background:$dark-grey-2;
+        transform: translateX(-108%);
+
+        transition: all .25s ease-in-out;
+      }
+      &:hover{
+        color:white;
+
+        &:after{
+          transform: translateX(0);
+          background:white;
+        }
+      }
+    }
+  }
+
+  @include screen(medium){
+    position:fixed;
+    z-index:1;
+    bottom:0;
+    left:0;
+    right:0;
+    padding:6% 0 0 0;
+    padding-bottom: 60px;
+
+    .wrapper{
+      h2{
+        font-size:4em;
+        margin-bottom:20px;
+      }
+    }
+
+    &:after{
+      left:initial;
+    }
+  }
+}
+
+
+@import "modules/animations";
+@import "modules/bxslider";
