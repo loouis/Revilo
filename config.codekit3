@@ -7,7 +7,7 @@
 		"uuidString": "E9E20665-7A84-415C-BE94-6DA398AB0BD7"
 		}
 	],
-"creatorBuild": "25813",
+"creatorBuild": "25849",
 "files": {
 	"\/assets\/fonts\/f37bella-stencil-webfont.eot": {
 		"ft": 8192,
@@ -2306,6 +2306,7 @@
 		},
 	"languageDefaultsUserDefined": [
 		],
+	"overrideExternalServerCSS": 0,
 	"previewPathAddition": "",
 	"skippedFoldersString": "log, _logs, logs, _cache, cache, \/storage\/framework\/sessions, node_modules",
 	"sourceFolderName": "source",
